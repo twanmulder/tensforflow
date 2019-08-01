@@ -27,18 +27,36 @@ window.onload = function() {
         // Push this prediction to the DOM
         let output = document.querySelector('.output');
         output.innerHTML = prediction.dataSync()[0];
+        console.log(prediction.dataSync());
     }
 
     function handleRetrainClick(){
+        let statusElement = document.querySelector('.status');
+        let spinner = document.querySelector('.spinner');
+        statusElement.innerHTML = "Training";
+        statusElement.classList.toggle('done');
+        statusElement.classList.toggle('training');
+        spinner.classList.toggle('hidden');
         // Get value inside input element
         let inputRetrain = parseInt(document.getElementsByTagName('input')[0].value);
         // Retrain model
         model.fit(xs, ys, {epochs: inputRetrain}).then(() => {
-            // Alert
-            alert('Done training!')
+            // Update training status
+            statusElement.innerHTML = "Done";
+            statusElement.classList.toggle('done');
+            statusElement.classList.toggle('training');
+            spinner.classList.toggle('hidden');
         })
     }
 
     document.getElementsByTagName('button')[0].addEventListener("click", handleRetrainClick);
     document.getElementsByTagName('button')[1].addEventListener("click", handlePredictClick);
+
+    var aside = document.getElementsByTagName('aside')[0],
+        spans = document.getElementsByTagName('p')[0].getElementsByTagName('span'),
+        loading = document.querySelector('.loading'),
+        tl = new TimelineMax({});
+
+        tl.staggerTo(spans, .3, {opacity: 1}, 1.5)
+        tl.to([aside, loading], .3, {opacity: 1})
 }

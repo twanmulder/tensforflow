@@ -54,13 +54,14 @@ aside input {
 	border: none;
 	padding: 6px;
 	text-align: right;
-	width: 100px;
+	width: 70px;
+	border-radius: 4px 0 0 4px;
 }
 
 aside button {
 	font-size: 13px;
 	border: none;
-	background: #86a4ff;
+	background: #6f90ff;
 	color: #fff;
 	border-radius: 0 4px 4px 0;
 }

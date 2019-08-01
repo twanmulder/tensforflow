@@ -62,8 +62,7 @@ aside button {
 	border: none;
 	background: #86a4ff;
 	color: #fff;
-	border-radius: 4px;
-	margin-bottom: 20px;
+	border-radius: 0 4px 4px 0;
 }
 
 .done {
@@ -83,6 +82,11 @@ img {
 .hello{
     font-size: 18px;
     font-style:italic;
+}
+.inputWrapper{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 16px;
 }
 
 
